@@ -1,38 +1,58 @@
-.App {
-  text-align: center;
-}
+/* Font Awesome and Google font links */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+@import  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css";
+@import  "https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap";
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+*{
+  padding: 0em;
+  margin: 0em;
+  font-family: 'Roboto', sans-serif;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+/* Header */
+header{
+  height: 30vh;
+  background-color: #bf74e2;
+}
+.bars{
+  font-size: 2em;
+  padding: 0.5em;
+}
+.checklist{
+  font-size: 3em;
+  padding-top: 1em;
+  padding-left: 0.5em;
+  text-align: left;
+  font-weight: bold;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Main */
+.notes{
+  margin-top: 2em;
+}
+.line{
+  display: flex;
+  margin-top: 2em;
+}
+.checkbox{
+  text-align: right;
+  background-color: #bf74e2;
+  border: 3px white solid;
+  padding-right: 3.2em;
+  margin-right: 1.5em;
+  border-radius: 50%;
+}
+.note{
+  color: black;
+  font-size: 1.3em;
+  padding: 1em;
+  width: 100%;
+}
+
+/* Footer */
+footer .button i{
+  font-size: 5em;
+  color: #bf74e2;
+  padding-left: 3.3em;
+  padding-top: 0.9em;
 }
