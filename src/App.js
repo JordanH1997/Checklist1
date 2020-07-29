@@ -6,23 +6,53 @@ class App extends Component {
   constructor(props){
     super(props)
 
-    this.todos = [
-      {
-        id: 1,
-        text: 'Meat'
-      },
-      {
-        id: 2,
-        text: 'Fish'
-      },
-      {
-        id: 3,
-        text: 'Veges'
-      },
-      {
-        id: 4,
-        text: 'Milk'
-      }]
+    this.state = {
+      todos:  [
+        {
+          id: 1,
+          text: 'Meat'
+        },
+        {
+          id: 2,
+          text: 'Fish'
+        },
+        {
+          id: 3,
+          text: 'Veges'
+        }
+      ],
+      noteInputValue: ''
+    }
+    
+  }
+
+// Event Handlers
+  handleNoteInputChange = (e)=>{
+    this.setState({noteInputValue:e.target.value})
+  }
+  handleAddButtonClick = (e)=>{
+    e.preventDefault()
+    var note = {
+      id:Date.now(),
+      text:this.state.noteInputValue
+    }
+
+    var newNotes = [note, ...this.state.todos]
+
+    this.setState({
+      todos:newNotes,
+      noteInputValue: ''
+    })
+  }
+  handleNoteDelete = (e)=>{
+    var noteIdToDelete = parseInt(e.target.id)
+    var notes = this.state.todos
+
+    var filteredNotes = notes.filter((item)=>{
+      return item.id != noteIdToDelete
+    })
+
+    this.setState({todos:filteredNotes})
   }
 
   render(){
@@ -38,11 +68,11 @@ class App extends Component {
         <div className="notes">
           
           {
-            this.todo.map((todo)=>{
+            this.state.todos.map((todo)=>{
 
-              return (
-                <div className="line line1">
-                  <div className="note note1">{todo.text}</div>
+              return (                
+                <div className="line line1" key={todo.id}>
+                  <div className="note note1"><i id={todo.id}className="fas fa-minus-circle" onClick={this.handleNoteDelete}></i> {todo.text}</div>
                   <div className="checkbox">.</div>
                 </div>
               )
@@ -52,9 +82,16 @@ class App extends Component {
         </div>
         </main>
         <footer>
-          <div className="button">
-            <i className="fas fa-plus-circle"></i>
-          </div>
+          
+          <form className="note-body">
+					  	<div className="form-group">
+					    	<label htmlFor="note-input">New note:</label>
+					    	  <input type="text" className="form-control" id="note-input" value ={this.state.noteInputValue}onChange={this.handleNoteInputChange}/>                 
+                    <i className="fas fa-plus-circle" onClick={this.handleAddButtonClick}></i>
+              </div>
+              
+					</form>
+          
         </footer>
       </div>
     );
